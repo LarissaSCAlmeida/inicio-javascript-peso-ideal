@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>peso ideal</title>
+    <script>
+        function calcularpesoideal()
+        {
+            var altura = parseFloat (document.getElementById("altura").value);
+            var genero = document.querySelector('input[name="genero"]:checked');
+            if (!genero) {
+                document.getElementById("resultado").innerText = "Por favor selecione seu gênero";
+                
+            } 
+            if (isNaN(altura)|| altura<=0)
+            {
+                document.getElementById("resultado").innerText = "Insira uma altura valida";
+            }
+        var pesoIdeal;
+        if (genero.value === "Masculino")
+        {
+            pesoIdeal = (72.7 * altura) - 58;
+        }
+        else if (genero.value === "Feminino" )
+        {
+            pesoIdeal = (62.1 * altura) - 44.7;
+
+        }
+            document.getElementById("resultado").innerText = "Peso ideal:"+ pesoIdeal.toFixed(2)+"kg";
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Cálculo do Peso Ideal</h1>
+    <label for="altura">Altura (em metros):</label>
+    <input type="number" step="0.01" id="altura" placeholder="Digite a sua altura">
+
+    <p>selecione o gênero</p>
+
+    <label><input type="radio" name="genero" value="Masculino">Masculino</label><br>
+    <label><input type="radio" name="genero" value="Feminino">Feminino</label><br>
+    
+    <button onclick="calcularpesoideal()">Calcular Peso ideal</button>
+    <p id="resultado"></p>
+</body>
+</html>
+<!-- Script onde colocar o codigo JavaScript
+ Função (CalcularPesoIdeal) será usado quando o usuario cliclar no botão
+ var pegar o valor da altura 
+ document.getElementById("altura"): localiza o campo de entrada com o id="altura" no documento HTML onde a pessoa digita altura
+ .value pegar o que foi digitado pelo usuario
+ parsefloat converto o valor inserido em um numero decimal 
+ document.querySelector('input[name="genero"]:checked') indetificar o botão que a pessoa apertou 
+ name="genero" o nome do genero que foi atribuido ao botão 
+ checked seletor para identificar qual botão está selecionado 
+ if (!genero) verificar ser foi selecionado o genenero 
+ document.getElementById("resultado").innerText = "Por favor selecione seu gênero"; caso o usuario não seleciona nenhum genero ira aparece a mensagem a cima 
+ if (isNaN(altura) verificar ser o valor inserido e valido ou se nao foi inserido 
+ caso alguma dessas condições foi verdaderia será exibida uma mensagem-->
